@@ -10,7 +10,8 @@ public class SteamBoat : MonoBehaviour
 	[SerializeField] Transform crane = null;
 	[SerializeField] float maxVelo = 10f;
 	[SerializeField] PaddleWheel[] wheels;
-	public bool afloat = true;
+	[SerializeField] float deathAngle = 90f;
+	[HideInInspector] public bool afloat = true;
 
 	Rigidbody rb;
 	private void Awake() {
@@ -38,7 +39,7 @@ public class SteamBoat : MonoBehaviour
 			return;
 		
 		// If flipping over
-		if (Vector3.Angle(transform.up, Vector3.up) > 90f) {
+		if (Vector3.Angle(transform.up, Vector3.up) > deathAngle) {
 			afloat = false;
 			foreach (PaddleWheel paddle in wheels) {
 				paddle.inWater = false;
