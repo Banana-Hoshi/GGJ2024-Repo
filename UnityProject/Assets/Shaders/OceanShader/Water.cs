@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class Water : MonoBehaviour
 {
-    public int xSize, ySize;
+    public int planeLength = 10;
+    public int quadRes = 10;
 
     private void Awake()
     {
@@ -16,20 +19,24 @@ public class Water : MonoBehaviour
 
     private void Generate()
     {
-
         GetComponent<MeshFilter>().mesh = mesh = new Mesh();
-        mesh.name = "Procedural Grid";
+        mesh.name = "Water";
+        mesh.indexFormat = IndexFormat.UInt32;
 
-        vertices = new Vector3[(xSize + 1) * (ySize + 1)];
+        float halfLength = planeLength * 0.5f;
+        int sideVertCount = planeLength * quadRes;
+
+        vertices = new Vector3[(sideVertCount + 1) * (sideVertCount + 1)];
         Vector2[] uv = new Vector2[vertices.Length];
         Vector4[] tangents = new Vector4[vertices.Length];
         Vector4 tangent = new Vector4(1f, 0f, 0f, -1f);
-        for (int i = 0, y = 0; y <= ySize; y++)
+
+        for (int i = 0, x = 0; x <= sideVertCount; ++x)
         {
-            for (int x = 0; x <= xSize; x++, i++)
+            for (int z = 0; z <= sideVertCount; ++z, ++i)
             {
-                vertices[i] = new Vector3(x, y);
-                uv[i] = new Vector2((float)x / xSize, (float)y / ySize);
+                vertices[i] = new Vector3(((float)x / sideVertCount * planeLength) - halfLength, 0, ((float)z / sideVertCount * planeLength) - halfLength);
+                uv[i] = new Vector2((float)x / sideVertCount, (float)z / sideVertCount);
                 tangents[i] = tangent;
             }
         }
@@ -38,19 +45,29 @@ public class Water : MonoBehaviour
         mesh.uv = uv;
         mesh.tangents = tangents;
 
-        int[] triangles = new int[xSize * ySize * 6];
-        for (int ti = 0, vi = 0, y = 0; y < ySize; y++, vi++)
+        int[] triangles = new int[sideVertCount * sideVertCount * 6];
+
+        for (int ti = 0, vi = 0, x = 0; x < sideVertCount; ++vi, ++x)
         {
-            for (int x = 0; x < xSize; x++, ti += 6, vi++)
+            for (int z = 0; z < sideVertCount; ti += 6, ++vi, ++z)
             {
                 triangles[ti] = vi;
-                triangles[ti + 3] = triangles[ti + 2] = vi + 1;
-                triangles[ti + 4] = triangles[ti + 1] = vi + xSize + 1;
-                triangles[ti + 5] = vi + xSize + 2;
-                mesh.triangles = triangles;
-                mesh.RecalculateNormals();
+                triangles[ti + 1] = vi + 1;
+                triangles[ti + 2] = vi + sideVertCount + 2;
+                triangles[ti + 3] = vi;
+                triangles[ti + 4] = vi + sideVertCount + 2;
+                triangles[ti + 5] = vi + sideVertCount + 1;
             }
         }
+
+        mesh.triangles = triangles;
+        mesh.RecalculateNormals();
+        Vector3[] normals = mesh.normals;
+
+        Vector3[] displacedVertices = new Vector3[vertices.Length];
+        Array.Copy(vertices, 0, displacedVertices, 0, vertices.Length);
+        Vector3[] displacedNormals = new Vector3[normals.Length];
+        Array.Copy(normals, 0, displacedNormals, 0, normals.Length);
     }
 
     private void OnDrawGizmos()
