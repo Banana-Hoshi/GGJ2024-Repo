@@ -62,14 +62,14 @@ Material:
     m_Floats:
     - _AlbedoIntensity: 1
     - _Amplitude: 10
-    - _Amplitude_1: 0.61
-    - _Amplitude_2: 1.42
-    - _Amplitude_3: 2.57
+    - _Amplitude_1: 15.82
+    - _Amplitude_2: 4.08
+    - _Amplitude_3: 8.24
     - _DiffuseIntensity: 1
     - _Frequency: 6
-    - _Frequency_1: 0.19
-    - _Frequency_2: -0.03
-    - _Frequency_3: 0.09
+    - _Frequency_1: 0.01
+    - _Frequency_2: 0.01
+    - _Frequency_3: 0.01
     - _LightIntensity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -78,20 +78,24 @@ Material:
     - _SpecularIntensity: 1
     - _SpecularStrength: 1
     - _Speed: 3.45
-    - _Speed_1: -0.53
-    - _Speed_2: 2.8
-    - _Speed_3: 0.1
-    - _Steepness_1: 1.76
+    - _Speed_1: 1
+    - _Speed_2: 3.41
+    - _Speed_3: 1.41
+    - _Steepness_1: 0
     - _Steepness_2: 0
-    - _Steepness_3: 0
+    - _Steepness_3: 14.33
     - _Wavelength: 1
     m_Colors:
     - _Albedo: {r: 0.30233175, g: 0.5041875, b: 0.8113207, a: 1}
-    - _Colour: {r: 0.11792446, g: 0.4707548, b: 1, a: 1}
+    - _Colour: {r: 0.15098791, g: 0.23164345, b: 0.8207547, a: 1}
+    - _DarkColour: {r: 0, g: 0, b: 0, a: 1}
     - _Direction: {r: 0, g: 0, b: 0, a: 0}
-    - _Direction_1: {r: 1, g: 0, b: 0, a: 0}
-    - _Direction_2: {r: -1, g: 1, b: 0, a: 0}
+    - _Direction_1: {r: 0, g: 1, b: 0, a: 0}
+    - _Direction_2: {r: 1, g: 0, b: 0, a: 0}
     - _Direction_3: {r: 1, g: 1, b: 0, a: 0}
+    - _LightColour: {r: 1, g: 1, b: 1, a: 0}
+    - _RandomRange: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColour: {r: 1, g: 1, b: 1, a: 0}
+    - _VoronoiClamp: {r: 0.5, g: 0.7, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
