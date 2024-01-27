@@ -192,7 +192,6 @@ MonoBehaviour:
   maxPeople: 3
   frontBound: {x: 0.4, y: 0.5}
   backBound: {x: -0.4, y: -0.5}
-  crewManager: {fileID: 0}
 --- !u!114 &7241072573232005771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9fa49617c0d5d244965cc391a14a7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personPrefabs: []
+  personPrefabs:
+  - {fileID: 3366929264645815938, guid: 1e4d233ff8d633a4193880ac13680804, type: 3}
+  - {fileID: 3366929264645815938, guid: f8418fd3a53e3364e8dc92c117984eb0, type: 3}
 --- !u!1 &874970543676444324
 GameObject:
   m_ObjectHideFlags: 0
