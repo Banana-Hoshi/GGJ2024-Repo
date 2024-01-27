@@ -13,7 +13,7 @@ public class AutoBalance : MonoBehaviour
     private Rigidbody rigidbodyComp;
 
 
-    private void Start()
+    protected virtual void Start()
     {
         rigidbodyComp = GetComponent<Rigidbody>();
     }

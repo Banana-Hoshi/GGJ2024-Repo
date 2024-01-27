@@ -13,13 +13,24 @@ public class Lifeboat : AutoBalance
     [SerializeField] private GameObject personPrefab;
     private float peopleCount;
 
-    private void Start()
+    private List<Person> peopleInLifeboat = new List<Person>();
+
+    protected override void Start()
     {
-        
+        base.Start();
+        peopleCount = Random.Range(minPeople, maxPeople);
+        for(int i = 0; i < peopleCount; i++)
+        {
+            SpawnPerson();
+        }
     }
 
     void Update()
     {
+        if (peopleCount <= 0)
+        {
+            //sink da boat
+        }
         ReBalanceShip();
     }
 
@@ -28,10 +39,17 @@ public class Lifeboat : AutoBalance
         GameObject person = Instantiate(personPrefab, 
             new Vector3(
                 Random.Range(frontBound.x, backBound.x), 
-                0.25f, 
+                0.35f, 
                 Random.Range(frontBound.y, backBound.y)), 
-            Quaternion.Euler(new Vector3(0, 0, 0)), peopleParent.transform);
-        //reorient so they rotate properly (I am stupid and could probably do this in the instantiate
-        person.transform.rotation = Quaternion.Euler(Vector3.zero);
+            Quaternion.Euler(Vector3.zero), transform);
+
+        peopleInLifeboat.Add(person.GetComponent<Person>());
+    }
+
+    public void KillPerson(Person person)
+    {
+        peopleInLifeboat.Remove(peopleInLifeboat.Find(x => x.name == person.name));
+        Debug.Log("Person Killed");
+        peopleCount--;
     }
 }
