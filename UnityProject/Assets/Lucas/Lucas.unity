@@ -187,8 +187,36 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5936607515642100297, guid: 9e8984fa739cbaa4386a9dcb3f3e8064,
+        type: 3}
+      propertyPath: maxPeople
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936607515642100297, guid: 9e8984fa739cbaa4386a9dcb3f3e8064,
+        type: 3}
+      propertyPath: minPeople
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241072573232005771, guid: 9e8984fa739cbaa4386a9dcb3f3e8064,
+        type: 3}
+      propertyPath: personPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241072573232005771, guid: 9e8984fa739cbaa4386a9dcb3f3e8064,
+        type: 3}
+      propertyPath: 'personPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3366929264645815938, guid: 1e4d233ff8d633a4193880ac13680804,
+        type: 3}
+    - target: {fileID: 7241072573232005771, guid: 9e8984fa739cbaa4386a9dcb3f3e8064,
+        type: 3}
+      propertyPath: 'personPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3366929264645815938, guid: f8418fd3a53e3364e8dc92c117984eb0,
+        type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7502519317585054649, guid: 9e8984fa739cbaa4386a9dcb3f3e8064, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e8984fa739cbaa4386a9dcb3f3e8064, type: 3}
