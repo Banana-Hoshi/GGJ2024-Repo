@@ -27,7 +27,7 @@ public class SteamBoat : MonoBehaviour
 	private void Start() {
 		vaccum?.Enable(false);
 		if (crew) {
-			for (int i = 0; i < 100; ++i) {
+			for (int i = 0; i < 25; ++i) {
 				crew.SpawnPerson(PutPerson(), transform.rotation, transform);
 			}
 		}

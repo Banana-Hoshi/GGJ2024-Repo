@@ -15,7 +15,8 @@ public class Person : MonoBehaviour
 
     private void FixedUpdate()
 	{
-        if(!crewManager || Vector3.Distance(transform.position, crewManager.transform.position) > 150f) //???
+        if(!crewManager || Vector2.Distance(new Vector2(transform.position.x, transform.position.z),
+				new Vector2(crewManager.transform.position.x, crewManager.transform.position.z)) > 100f || transform.position.y < -10f) //???
         {
 			KillSelf();
             Destroy(gameObject, 0.2f); //0.2 so that the crew manager can find and remove it from the list without hitting a null reference
