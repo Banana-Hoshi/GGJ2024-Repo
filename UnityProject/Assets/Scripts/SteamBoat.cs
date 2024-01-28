@@ -14,8 +14,10 @@ public class SteamBoat : MonoBehaviour
 	[HideInInspector] public bool afloat = true;
 
 	Rigidbody rb;
+	WaterHeightCheck[] bumps;
 	private void Awake() {
 		rb = GetComponent<Rigidbody>();
+		bumps = GetComponentsInChildren<WaterHeightCheck>();
 	}
 
 	Vector2 tiltInput = Vector2.zero;
@@ -62,6 +64,12 @@ public class SteamBoat : MonoBehaviour
 	public void SetInWater(bool val) {
 		foreach (PaddleWheel paddle in wheels) {
 			paddle.inWater = val;
+		}
+	}
+
+	public void Bump(float force) {
+		foreach (WaterHeightCheck bump in bumps) {
+			bump.Bump(rb, force * Random.Range(0.5f, 1.5f) / bumps.Length);
 		}
 	}
 }

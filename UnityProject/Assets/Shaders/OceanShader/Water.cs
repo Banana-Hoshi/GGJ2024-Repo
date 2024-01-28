@@ -71,21 +71,4 @@ public class Water : MonoBehaviour
         Vector3[] displacedNormals = new Vector3[normals.Length];
         Array.Copy(normals, 0, displacedNormals, 0, normals.Length);
 	}
-
-	public RenderTexture buoy;
-	private void Start()
-	{
-		// Thank you https://www.youtube.com/watch?v=ja8yCvXzw2c
-
-		RenderTexture rt = new RenderTexture(1024, 1024, 0, RenderTextureFormat.RHalf, RenderTextureReadWrite.Linear);
-		rt.filterMode = FilterMode.Bilinear;
-		rt.wrapMode = TextureWrapMode.Repeat;
-		rt.enableRandomWrite = true;
-		rt.useMipMap = false;
-		rt.autoGenerateMips = false;
-		rt.anisoLevel = 16;
-		rt.Create();
-
-		buoy = rt;
-	}
 }

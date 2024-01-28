@@ -8,10 +8,10 @@ public class Waher : MonoBehaviour
 	private void OnTriggerStay(Collider other) {
 		if (other.attachedRigidbody) {
 			var boat = other.attachedRigidbody.GetComponent<SteamBoat>();
-			if (boat && !boat.afloat)
+			if (!boat || !boat.afloat)
 				return;
 			
-			other.attachedRigidbody.AddForce(Vector2.up * f, ForceMode.Acceleration);
+			boat.Bump(f);
 		}
 	}
 
