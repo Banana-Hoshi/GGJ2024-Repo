@@ -146,6 +146,51 @@ MonoBehaviour:
   rotationSpeed: 0
   horizontalOffset: 0
   verticalOffset: 22
+--- !u!1 &5201976153910734046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2227988297223643254}
+  - component: {fileID: 738651776564640362}
+  m_Layer: 0
+  m_Name: KeepMagnetRot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2227988297223643254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5201976153910734046}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7170471778079993985}
+  m_Father: {fileID: 8593757185904055478}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &738651776564640362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5201976153910734046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3826237690c9da54487a3801e543dacb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5630867692045685627
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,11 +218,11 @@ Transform:
   m_GameObject: {fileID: 5630867692045685627}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 11, z: -37.39372}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8593757185904055478}
+  m_Father: {fileID: 2227988297223643254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6610455133273437042
 MonoBehaviour:
@@ -222,6 +267,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 280103726377193743, guid: 6a84a6faf4a45d740b543203fbc98a46,
+        type: 3}
+      propertyPath: inWater
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040452260531930341, guid: 6a84a6faf4a45d740b543203fbc98a46,
+        type: 3}
+      propertyPath: inWater
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5983212870232937640, guid: 6a84a6faf4a45d740b543203fbc98a46,
         type: 3}
       propertyPath: vaccum
@@ -288,7 +343,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6917080525221631485, guid: 6a84a6faf4a45d740b543203fbc98a46,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7170471778079993985}
+      addedObject: {fileID: 2227988297223643254}
     - targetCorrespondingSourceObject: {fileID: 6917080525221631485, guid: 6a84a6faf4a45d740b543203fbc98a46,
         type: 3}
       insertIndex: -1
@@ -458,7 +513,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: Boat
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 3282265793480196960}
 --- !u!1 &7750417688067874214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4842006650404379885, guid: 6a84a6faf4a45d740b543203fbc98a46,
