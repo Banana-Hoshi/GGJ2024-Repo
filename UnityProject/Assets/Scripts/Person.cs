@@ -5,6 +5,14 @@ using UnityEngine;
 public class Person : MonoBehaviour
 {
     CrewManager crewManager;
+    [SerializeField] private GameObject[] accessories;
+
+    private void Start()
+    {
+        int accIndex = Random.Range(0, accessories.Length);
+        accessories[accIndex].SetActive(true);
+    }
+
     private void FixedUpdate()
 	{
         if(!crewManager || Vector3.Distance(transform.position, crewManager.transform.position) > 150f) //???
