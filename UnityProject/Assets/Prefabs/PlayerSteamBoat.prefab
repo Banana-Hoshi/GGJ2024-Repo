@@ -595,7 +595,8 @@ PrefabInstance:
       value: PlayerSteamBoat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7706065841779049370, guid: 6a84a6faf4a45d740b543203fbc98a46, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6917080525221631485, guid: 6a84a6faf4a45d740b543203fbc98a46,
         type: 3}
