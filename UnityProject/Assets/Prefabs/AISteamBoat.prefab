@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: 5983212870232937640, guid: 6a84a6faf4a45d740b543203fbc98a46,
         type: 3}
       propertyPath: deathAngle
-      value: 67.5
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 6753858731306323238, guid: 6a84a6faf4a45d740b543203fbc98a46,
         type: 3}
