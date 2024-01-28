@@ -24,7 +24,7 @@ public class Lifeboat : AutoBalance
         {
             crewManager.SpawnPerson(transform.position +
                 new Vector3(Random.Range(frontBound.x, backBound.x), 0.35f, Random.Range(frontBound.y, backBound.y)),
-                Quaternion.identity);
+                Quaternion.identity, null);
         }
     }
 

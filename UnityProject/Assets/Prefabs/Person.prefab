@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd36278fd40366469146abe362f797c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crewManager: {fileID: 0}
   accessories:
   - {fileID: 377433463971257675}
   - {fileID: 5250667417151615085}
@@ -391,7 +392,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2364047066345792417}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c7f2405f40058d3468597ce4961f07bc, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

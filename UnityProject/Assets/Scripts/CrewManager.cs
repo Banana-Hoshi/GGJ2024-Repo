@@ -8,9 +8,9 @@ public class CrewManager : MonoBehaviour
     [SerializeField] private GameObject personPrefabs;
     private List<Person> crewList = new List<Person>();
 
-    public void SpawnPerson(Vector3 location, Quaternion rotation)
+    public void SpawnPerson(Vector3 location, Quaternion rotation, Transform parent)
     {
-        GameObject person = Instantiate(personPrefabs, location, rotation);
+        GameObject person = Instantiate(personPrefabs, location, rotation, parent);
         person.GetComponent<Person>().SetCrewManager(this);
         crewList.Add(person.GetComponent<Person>());
     }
