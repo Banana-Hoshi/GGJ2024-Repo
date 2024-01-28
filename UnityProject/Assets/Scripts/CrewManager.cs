@@ -5,21 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class CrewManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] personPrefabs;
+    [SerializeField] private GameObject personPrefabs;
     private List<Person> crewList = new List<Person>();
 
     public void SpawnPerson(Vector3 location, Transform spawnerTrans, Quaternion rotation)
     {
-        int personVariant = Random.Range(0, personPrefabs.Length);
-        GameObject person = Instantiate(personPrefabs[personVariant], location, rotation);
-        person.GetComponent<Person>().SetCrewManager(this);
-        crewList.Add(person.GetComponent<Person>());
-    }
-
-    public void SpawnPerson(Vector3 location, Transform spawnerTrans, Quaternion rotation, int forcedVariant)
-    {
-        forcedVariant = Mathf.Clamp(forcedVariant, 0, personPrefabs.Length);
-        GameObject person = Instantiate(personPrefabs[forcedVariant], location, rotation);
+        GameObject person = Instantiate(personPrefabs, location, rotation);
         person.GetComponent<Person>().SetCrewManager(this);
         crewList.Add(person.GetComponent<Person>());
     }
