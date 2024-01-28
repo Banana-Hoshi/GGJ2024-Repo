@@ -9,6 +9,7 @@ public class AIBoat : MonoBehaviour
 	[SerializeField] PaddleWheel leftPaddle;
 	[SerializeField] PaddleWheel rightPaddle;
 	[SerializeField] float leway = 15f;
+	[SerializeField] private Vector2 minAngles;
 	SteamBoat boat;
 
 	private void Awake() {
@@ -32,5 +33,23 @@ public class AIBoat : MonoBehaviour
 			else
 				leftPaddle.StopSpin();
 		}
+
+
+		Vector3 currentRot = transform.rotation.eulerAngles;
+		if (currentRot.x > 180f)
+			currentRot.x -= 360f;
+
+		if (currentRot.z > 180f)
+			currentRot.z -= 360f;
+			
+		if (Mathf.Abs(currentRot.x) > minAngles.x)
+			boat.tiltInput.y = -Mathf.Sign(currentRot.x);
+		else
+			boat.tiltInput.y = 0f;
+
+		if (Mathf.Abs(currentRot.z) > minAngles.y)
+			boat.tiltInput.x = Mathf.Sign(currentRot.z);
+		else
+			boat.tiltInput.x = 0f;
 	}
 }

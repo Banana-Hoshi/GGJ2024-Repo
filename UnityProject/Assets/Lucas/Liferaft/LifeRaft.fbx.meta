@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 04e6f888e6b09bd4695aa30c2e1eca1c
+guid: 28915c5984163ea478258c22f45e8d25
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,43 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Body
-    second: {fileID: 2100000, guid: 4255ce3ca53ad1e43bf7c801d55b3892, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Buttons_White
-    second: {fileID: 2100000, guid: 3bc62feed997695478d3a59a0fe58541, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Buttons_White.001
-    second: {fileID: 2100000, guid: 2a796559e2119304c8fa3a98d2a4c12a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: InnerPants
-    second: {fileID: 2100000, guid: c12ac09c2b2c20e49955eac719e6c04d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.003
-    second: {fileID: 2100000, guid: ab578e9ace9080e4b8170cb5442f57ee, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Nose
-    second: {fileID: 2100000, guid: 1596dd44878ccb64f8d58a0f1f45b89e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: PantsWhite
-    second: {fileID: 2100000, guid: 9fd973b949513a34c88ce543f5f8174d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: WhiteButton_Outline
-    second: {fileID: 2100000, guid: 64c42c74043650f4c8865ce0e4a97563, type: 2}
+      name: TT_checker_2048x2048_UV_GRID
+    second: {fileID: 2100000, guid: 7f282f5f5dd55bb45a065085c828b776, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

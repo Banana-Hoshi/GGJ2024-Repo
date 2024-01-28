@@ -15,14 +15,12 @@ public class CraneArm : MonoBehaviour
 	
 	private void LateUpdate() {
 		Vector3 diff = target.position - transform.position;
-		// Convert into local pos
-		diff = transform.parent.rotation * diff;
 		diff.y = 0f;
-		arm.localScale = new Vector3(1f, 1f, diff.magnitude * oneOverLength);
 
+		arm.localScale = new Vector3(1f, 1f, diff.magnitude * oneOverLength);
 		end.localPosition = Vector3.forward * diff.magnitude;
 
-		transform.localRotation = Quaternion.Euler(0f, Vector3.SignedAngle(Vector3.forward, diff, Vector3.up), 0f);
+		transform.localRotation = Quaternion.Euler(0f, Vector3.SignedAngle(transform.parent.forward, diff, Vector3.up), 0f);
 
 		end.rotation = Quaternion.Euler(0f, transform.eulerAngles.y, 0f);
 	}

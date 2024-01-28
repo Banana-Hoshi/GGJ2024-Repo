@@ -5,25 +5,24 @@ using UnityEngine;
 public class Waher : MonoBehaviour
 {
 	[SerializeField] float f = 5f;
+	[SerializeField] float t = 0.1f;
 	private void OnTriggerStay(Collider other) {
 		if (other.attachedRigidbody) {
-			var boat = other.attachedRigidbody.GetComponent<SteamBoat>();
-			if (boat && !boat.afloat)
-				return;
-			
-			other.attachedRigidbody.AddForce(Vector2.up * f, ForceMode.Acceleration);
+			Floaty boat = other.attachedRigidbody.GetComponent<Floaty>();
+			if (boat && boat.enabled)
+				boat.Bump(f, t);
 		}
 	}
 
 	private void OnTriggerEnter(Collider other) {
-		var boat = other.attachedRigidbody?.GetComponent<SteamBoat>();
+		SteamBoat boat = other.attachedRigidbody?.GetComponent<SteamBoat>();
 		if (boat && boat.afloat) {
 			boat.SetInWater(true);
 		}
 	}
 
 	private void OnTriggerExit(Collider other) {
-		var boat = other.attachedRigidbody?.GetComponent<SteamBoat>();
+		SteamBoat boat = other.attachedRigidbody?.GetComponent<SteamBoat>();
 		if (boat && boat.afloat) {
 			boat.SetInWater(false);
 		}
