@@ -6,10 +6,18 @@ public class LightingManager : MonoBehaviour
     //Scene References
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
+    [SerializeField] private Material SkyboxShader;
     //Variables
     [SerializeField, Range(0, 24)] private float TimeOfDay;
     [SerializeField] private float TimeMultiplier = 1f;
 
+    private void Start()
+    {
+        if (SkyboxShader != null)
+        {
+            SkyboxShader.SetFloat("_TimeMultiplier", TimeMultiplier);
+        }
+    }
 
     private void Update()
     {
