@@ -14,19 +14,21 @@ public class Water : MonoBehaviour
         Generate();
     }
 
-    private Vector3[] vertices;
     private Mesh mesh;
 
     private void Generate()
     {
-        GetComponent<MeshFilter>().mesh = mesh = new Mesh();
+		if (GetComponent<MeshFilter>().sharedMesh) {
+			DestroyImmediate(GetComponent<MeshFilter>().sharedMesh);
+		}
+        GetComponent<MeshFilter>().sharedMesh = mesh = new Mesh();
         mesh.name = "Water";
         mesh.indexFormat = IndexFormat.UInt32;
 
         float halfLength = planeLength * 0.5f;
         int sideVertCount = planeLength * quadRes;
 
-        vertices = new Vector3[(sideVertCount + 1) * (sideVertCount + 1)];
+        Vector3[] vertices = new Vector3[(sideVertCount + 1) * (sideVertCount + 1)];
         Vector2[] uv = new Vector2[vertices.Length];
         Vector4[] tangents = new Vector4[vertices.Length];
         Vector4 tangent = new Vector4(1f, 0f, 0f, -1f);
@@ -68,13 +70,22 @@ public class Water : MonoBehaviour
         Array.Copy(vertices, 0, displacedVertices, 0, vertices.Length);
         Vector3[] displacedNormals = new Vector3[normals.Length];
         Array.Copy(normals, 0, displacedNormals, 0, normals.Length);
-    }
+	}
 
-    private void OnDrawGizmos()
-    {
-        if (vertices == null)
-        {
-            return;
-        }
-    }
+	public RenderTexture buoy;
+	private void Start()
+	{
+		// Thank you https://www.youtube.com/watch?v=ja8yCvXzw2c
+
+		RenderTexture rt = new RenderTexture(1024, 1024, 0, RenderTextureFormat.RHalf, RenderTextureReadWrite.Linear);
+		rt.filterMode = FilterMode.Bilinear;
+		rt.wrapMode = TextureWrapMode.Repeat;
+		rt.enableRandomWrite = true;
+		rt.useMipMap = false;
+		rt.autoGenerateMips = false;
+		rt.anisoLevel = 16;
+		rt.Create();
+
+		buoy = rt;
+	}
 }
