@@ -13,6 +13,8 @@ public class SteamBoat : MonoBehaviour
 	[SerializeField] PaddleWheel[] wheels;
 	[SerializeField] CrewVaccum vaccum;
 	[SerializeField] float deathAngle = 90f;
+	[SerializeField] Transform[] crewSpawnPoints;
+	[SerializeField] GameObject[] funnies;
 	[HideInInspector] public bool afloat = true;
 
 	Rigidbody rb;
@@ -104,8 +106,14 @@ public class SteamBoat : MonoBehaviour
 		}
 	}
 
-	Vector3 PutPerson() {
-		return transform.position + transform.up;
+	Vector3 PutPerson(bool withFunnies = true) {
+		Vector3 pos = crewSpawnPoints[Random.Range(0, crewSpawnPoints.Length)].position + new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
+
+		if (withFunnies && funnies.Length > 0 && Random.Range(0, 10) > 7) {
+			Instantiate(funnies[Random.Range(0, funnies.Length)], pos, Quaternion.identity);
+			return PutPerson(false);
+		}
+		return pos;
 	}
 
 	WaitForFixedUpdate wffu = new WaitForFixedUpdate();

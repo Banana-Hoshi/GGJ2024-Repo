@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Person : MonoBehaviour
 {
-    CrewManager crewManager;
+    public CrewManager crewManager;
     [SerializeField] private GameObject[] accessories;
 
     private void Start()
@@ -15,7 +15,7 @@ public class Person : MonoBehaviour
 
     private void FixedUpdate()
 	{
-        if(!crewManager || Vector3.Distance(transform.position, crewManager.transform.position) > 75f) //???
+        if(!crewManager || Vector3.Distance(transform.position, crewManager.transform.position) > 150f) //???
         {
 			KillSelf();
             Destroy(gameObject, 0.2f); //0.2 so that the crew manager can find and remove it from the list without hitting a null reference

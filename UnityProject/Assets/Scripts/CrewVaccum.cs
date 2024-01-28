@@ -14,9 +14,10 @@ public class CrewVaccum : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other) {
 		Person person = other.attachedRigidbody?.GetComponent<Person>();
-		if (person) {
+		if (person && person.crewManager != crew) {
 			person.KillSelf();
 			crew.AddPersonToCrew(person);
+			person.transform.SetParent(crew.transform);
 			people.Add(person);
 			StartCoroutine(Magnet(person, other.attachedRigidbody));
 		}
@@ -26,11 +27,13 @@ public class CrewVaccum : MonoBehaviour
 	IEnumerator Magnet(Person person, Rigidbody rb) {
 		rb.useGravity = false;
 		while (person && rb && enabled) {
-			rb.AddForce((transform.position - rb.position).normalized * 10f, ForceMode.Acceleration);
+			rb.AddForce((transform.position - rb.position).normalized * 100f, ForceMode.Acceleration);
 			yield return wffu;
 		}
-		if (rb)
+		if (rb) {
+			rb.velocity = Vector3.zero;
 			rb.useGravity = true;
+		}
 	}
 
 	public List<Person> people = new List<Person>();
