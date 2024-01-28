@@ -6,20 +6,26 @@ public class Waher : MonoBehaviour
 {
 	[SerializeField] float f = 5f;
 	private void OnTriggerStay(Collider other) {
-		other.attachedRigidbody.AddForce(Vector2.up * f, ForceMode.Acceleration);
+		if (other.attachedRigidbody) {
+			var boat = other.attachedRigidbody.GetComponent<SteamBoat>();
+			if (boat && !boat.afloat)
+				return;
+			
+			other.attachedRigidbody.AddForce(Vector2.up * f, ForceMode.Acceleration);
+		}
 	}
 
 	private void OnTriggerEnter(Collider other) {
-		if (other.attachedRigidbody.GetComponent<SteamBoat>()) {
-			other.attachedRigidbody.GetComponent<SteamBoat>().SetInWater(true);
-			
+		var boat = other.attachedRigidbody?.GetComponent<SteamBoat>();
+		if (boat && boat.afloat) {
+			boat.SetInWater(true);
 		}
 	}
 
 	private void OnTriggerExit(Collider other) {
-		if (other.attachedRigidbody.GetComponent<SteamBoat>()) {
-			other.attachedRigidbody.GetComponent<SteamBoat>().SetInWater(false);
-			
+		var boat = other.attachedRigidbody?.GetComponent<SteamBoat>();
+		if (boat && boat.afloat) {
+			boat.SetInWater(false);
 		}
 	}
 }
