@@ -17,7 +17,7 @@ public class CrewVaccum : MonoBehaviour
 		if (person && person.crewManager != crew) {
 			person.KillSelf();
 			crew.AddPersonToCrew(person);
-			person.transform.SetParent(crew.transform);
+			person.transform.SetParent(null);
 			people.Add(person);
 			StartCoroutine(Magnet(person, other.attachedRigidbody));
 		}
@@ -27,12 +27,14 @@ public class CrewVaccum : MonoBehaviour
 	IEnumerator Magnet(Person person, Rigidbody rb) {
 		rb.useGravity = false;
 		while (person && rb && enabled) {
-			rb.AddForce((transform.position - rb.position).normalized * 100f, ForceMode.Acceleration);
+			rb.position = Vector3.MoveTowards(rb.position, transform.position, 100f * Time.fixedDeltaTime);
 			yield return wffu;
 		}
 		if (rb) {
+			rb.isKinematic = false;
 			rb.velocity = Vector3.zero;
 			rb.useGravity = true;
+			person.transform.SetParent(crew.transform);
 		}
 	}
 
