@@ -5,22 +5,7 @@ using UnityEngine.Rendering;
 
 public class WaterHeightCheck : MonoBehaviour
 {
-	AsyncGPUReadbackRequest readback;
-	int x, y;
-
-	private void Update() {
-		if (readback.done) {
-			if (readback.hasError) {
-				Debug.Log("whoops");
-			}
-
-			StartReadback();
-		}
-	}
-
-	void StartReadback() {
-		x = 0;
-		y = 0;
-		readback = AsyncGPUReadback.Request(null, 0, x, 1, y, 1, 0, 1);
+	public void Bump(Rigidbody body, float force) {
+		body.AddForceAtPosition(Vector3.up * force, transform.position, ForceMode.Force);
 	}
 }
