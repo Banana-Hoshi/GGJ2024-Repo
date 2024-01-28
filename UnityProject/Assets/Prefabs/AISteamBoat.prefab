@@ -13,10 +13,20 @@ PrefabInstance:
       propertyPath: inWater
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 983604524124057098, guid: 6a84a6faf4a45d740b543203fbc98a46,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2040452260531930341, guid: 6a84a6faf4a45d740b543203fbc98a46,
         type: 3}
       propertyPath: inWater
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5983212870232937640, guid: 6a84a6faf4a45d740b543203fbc98a46,
+        type: 3}
+      propertyPath: deathAngle
+      value: 67.5
       objectReference: {fileID: 0}
     - target: {fileID: 6917080525221631485, guid: 6a84a6faf4a45d740b543203fbc98a46,
         type: 3}
@@ -82,21 +92,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8389696992066489487}
   m_SourcePrefab: {fileID: 100100000, guid: 6a84a6faf4a45d740b543203fbc98a46, type: 3}
---- !u!114 &3125041212670070852 stripped
+--- !u!114 &3721779769166042985 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 280103726377193743, guid: 6a84a6faf4a45d740b543203fbc98a46,
-    type: 3}
-  m_PrefabInstance: {fileID: 2935573683002802507}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81f8d532e93c38b41a2c23849e0c07af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3813533155512026542 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2040452260531930341, guid: 6a84a6faf4a45d740b543203fbc98a46,
+  m_CorrespondingSourceObject: {fileID: 1953201374304835106, guid: 6a84a6faf4a45d740b543203fbc98a46,
     type: 3}
   m_PrefabInstance: {fileID: 2935573683002802507}
   m_PrefabAsset: {fileID: 0}
@@ -125,7 +123,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  leftPaddle: {fileID: 3813533155512026542}
-  rightPaddle: {fileID: 3125041212670070852}
+  leftPaddle: {fileID: 6569039685809947278}
+  rightPaddle: {fileID: 3721779769166042985}
   leway: 15
   minAngles: {x: 5, y: 5}
+--- !u!114 &6569039685809947278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8328469061129946053, guid: 6a84a6faf4a45d740b543203fbc98a46,
+    type: 3}
+  m_PrefabInstance: {fileID: 2935573683002802507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f8d532e93c38b41a2c23849e0c07af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
