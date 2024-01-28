@@ -484,6 +484,11 @@ PrefabInstance:
       objectReference: {fileID: 6610455133273437042}
     - target: {fileID: 5983212870232937640, guid: 6a84a6faf4a45d740b543203fbc98a46,
         type: 3}
+      propertyPath: deathAngle
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5983212870232937640, guid: 6a84a6faf4a45d740b543203fbc98a46,
+        type: 3}
       propertyPath: craneDistance.x
       value: 15
       objectReference: {fileID: 0}

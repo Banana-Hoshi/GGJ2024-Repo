@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float verticalOffset = 15f;
     private float horizontalOffset = 0f;
     private float horizontalOffsetTarget = 0f;
+	int turning = 0;
 
 	private void Start() {
 		transform.SetParent(null);
@@ -33,16 +34,26 @@ public class CameraController : MonoBehaviour
     }
 
 	public void TiltCameraRight(InputAction.CallbackContext ctx) {
-		if (ctx.phase == InputActionPhase.Started)
-			horizontalOffsetTarget += 30f;
-		else if (ctx.phase == InputActionPhase.Canceled)
+		if (ctx.phase == InputActionPhase.Started) {
+			if (horizontalOffsetTarget <= 0f && (turning & 1) == 0)
+				horizontalOffsetTarget += 30f;
+				turning = turning | 1;
+		}
+		else if (ctx.phase == InputActionPhase.Canceled) {
 			horizontalOffsetTarget -= 30f;
+				turning = turning & 2;
+		}
 	}
 
 	public void TiltCameraLeft(InputAction.CallbackContext ctx) {
-		if (ctx.phase == InputActionPhase.Started)
-			horizontalOffsetTarget -= 30f;
-		else if (ctx.phase == InputActionPhase.Canceled)
+		if (ctx.phase == InputActionPhase.Started) {
+			if (horizontalOffsetTarget >= 0f && (turning & 2) == 0)
+				horizontalOffsetTarget -= 30f;
+				turning = turning | 2;
+		}
+		else if (ctx.phase == InputActionPhase.Canceled) {
 			horizontalOffsetTarget += 30f;
+			turning = turning & 1;
+		}
 	}
 }
