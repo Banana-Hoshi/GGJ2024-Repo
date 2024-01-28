@@ -24,6 +24,11 @@ public class SteamBoat : MonoBehaviour
 
 	private void Start() {
 		vaccum?.Enable(false);
+		if (crew) {
+			for (int i = 0; i < 100; ++i) {
+				crew.SpawnPerson(PutPerson(), transform.rotation);
+			}
+		}
 	}
 
 	[HideInInspector]
@@ -45,8 +50,10 @@ public class SteamBoat : MonoBehaviour
 			cranePos = Vector2.zero;
 			// Get people
 			foreach (Person person in vaccum.people) {
-				if (person)
-					PutPerson(person);
+				if (person) {
+					person.transform.position = PutPerson();
+					person.transform.rotation = transform.rotation;
+				}
 			}
 
 			vaccum.Enable(false);
@@ -97,8 +104,8 @@ public class SteamBoat : MonoBehaviour
 		}
 	}
 
-	void PutPerson(Person person) {
-		person.transform.position = transform.position + transform.up;
+	Vector3 PutPerson() {
+		return transform.position + transform.up;
 	}
 
 	WaitForFixedUpdate wffu = new WaitForFixedUpdate();
