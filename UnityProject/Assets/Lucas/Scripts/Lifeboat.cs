@@ -22,19 +22,23 @@ public class Lifeboat : AutoBalance
         int peopleCount = Random.Range(minPeople, maxPeople);
         for(int i = 0; i < peopleCount; i++)
         {
-            crewManager.SpawnPerson(
+            crewManager.SpawnPerson(transform.position +
                 new Vector3(Random.Range(frontBound.x, backBound.x), 0.35f, Random.Range(frontBound.y, backBound.y)),
                 transform,
                 Quaternion.Euler(Vector3.zero));
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (crewManager.GetCrewCount() <= 0 && floating)
+		if (!floating)
+			return;
+		
+        ReBalanceShip();
+        if (crewManager.GetCrewCount() <= 0)
         {
             floating = false;
+			GetComponent<Floaty>().enabled = false;
         }
-        ReBalanceShip();
     }
 }

@@ -11,7 +11,7 @@ public class CrewManager : MonoBehaviour
     public void SpawnPerson(Vector3 location, Transform spawnerTrans, Quaternion rotation)
     {
         int personVariant = Random.Range(0, personPrefabs.Length);
-        GameObject person = Instantiate(personPrefabs[personVariant], location, rotation, spawnerTrans);
+        GameObject person = Instantiate(personPrefabs[personVariant], location, rotation);
         person.GetComponent<Person>().SetCrewManager(this);
         crewList.Add(person.GetComponent<Person>());
     }
@@ -19,7 +19,7 @@ public class CrewManager : MonoBehaviour
     public void SpawnPerson(Vector3 location, Transform spawnerTrans, Quaternion rotation, int forcedVariant)
     {
         forcedVariant = Mathf.Clamp(forcedVariant, 0, personPrefabs.Length);
-        GameObject person = Instantiate(personPrefabs[forcedVariant], location, rotation, spawnerTrans);
+        GameObject person = Instantiate(personPrefabs[forcedVariant], location, rotation);
         person.GetComponent<Person>().SetCrewManager(this);
         crewList.Add(person.GetComponent<Person>());
     }
@@ -29,18 +29,21 @@ public class CrewManager : MonoBehaviour
         return crewList.Count;
     }
 
-    private Person FindPerson(string personName)
-    {
-        return crewList.Find(x => x.name == personName);
-    }
+	public void KillCrew() {
+		foreach (Person person in crewList) {
+			person.SetCrewManager(null);
+		}
+		crewList.Clear();
+	}
 
-    public void KillPerson(string personName)
+    public void KillPerson(Person person)
     {
-        crewList.Remove(FindPerson(personName));
+        crewList.Remove(person);
     }
 
     public void AddPersonToCrew(Person person)
     {
         crewList.Add(person);
+		person.SetCrewManager(this);
     }
 }
