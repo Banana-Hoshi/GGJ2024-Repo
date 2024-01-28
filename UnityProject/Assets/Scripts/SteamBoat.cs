@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 public class SteamBoat : MonoBehaviour
 {
 	[SerializeField] Vector2 tiltSpeed = Vector2.one;
+	[SerializeField] Vector2 craneDistance = new Vector2(25, 50);
 	[SerializeField] float maxVelo = 10f;
 	[SerializeField] PaddleWheel[] wheels;
 	[SerializeField] CrewVaccum vaccum;
@@ -37,7 +38,7 @@ public class SteamBoat : MonoBehaviour
 	Vector2 cranePos = Vector2.zero;
 	public void CraneDir(InputAction.CallbackContext ctx) {
 		if (ctx.phase == InputActionPhase.Performed) {
-			cranePos = ctx.ReadValue<Vector2>();
+			cranePos = ctx.ReadValue<Vector2>() * craneDistance;
 			vaccum.Enable(true);
 		}
 		else if (ctx.phase == InputActionPhase.Canceled) {
@@ -87,7 +88,7 @@ public class SteamBoat : MonoBehaviour
 		// Move Crane to position
 		if (afloat && vaccum)
 			vaccum.transform.localPosition = Vector3.MoveTowards(vaccum.transform.localPosition,
-					new Vector3(cranePos.x * 2f, 0f, cranePos.y * 2f), Time.fixedDeltaTime * 4f);
+					new Vector3(cranePos.x * 2f, 0f, cranePos.y * 2f), Time.fixedDeltaTime * 25f);
 	}
 
 	public void SetInWater(bool val) {

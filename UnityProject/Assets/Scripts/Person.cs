@@ -13,6 +13,7 @@ public class Person : MonoBehaviour
             Destroy(gameObject, 0.2f); //0.2 so that the crew manager can find and remove it from the list without hitting a null reference
             //will probably increase the time till destroy to better show the people flying around
 			enabled = false;
+			GetComponent<Rigidbody>().AddForce(0f, 1000f, 0f, ForceMode.VelocityChange);
         }
     }
 

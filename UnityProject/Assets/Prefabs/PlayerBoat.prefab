@@ -930,7 +930,6 @@ GameObject:
   - component: {fileID: 6878059551237571798}
   - component: {fileID: 6475949234992465227}
   - component: {fileID: 1787564468447159012}
-  - component: {fileID: 4358540601142412587}
   - component: {fileID: -5063847690030512476}
   m_Layer: 0
   m_Name: PlayerBoat
@@ -1121,19 +1120,6 @@ MonoBehaviour:
   personPrefabs:
   - {fileID: 3366929264645815938, guid: 1e4d233ff8d633a4193880ac13680804, type: 3}
   - {fileID: 3366929264645815938, guid: f8418fd3a53e3364e8dc92c117984eb0, type: 3}
---- !u!114 &4358540601142412587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8899775724248357333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fb298b145c6e644192c298e6ebcbe61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crew: {fileID: 0}
 --- !u!114 &-5063847690030512476
 MonoBehaviour:
   m_ObjectHideFlags: 0
